@@ -1,9 +1,13 @@
 extends Node # instancia a classe Node2D
 
 var status = 1
+#Controla o inicio e fim do jogo
 var vscore = 0
+#A variavel vscore controlo a pontuação do jogo
 var x = 3
+#A variavel X controla o eixo horizontal do jogo, controlando velocidade do background e das colunas
 var y = 5
+#Controla o eixo vertical, controlando a gravidade e velociade em que o dragão sobe e desce
 
 # executa essa função ao carregar o jogo
 func _ready():
@@ -27,6 +31,7 @@ func _process(delta):
 			$columns.position.x = rand_range(0, 350) - 50
 			$columns.position.y = rand_range(0, 400) - 200
 		
+	
 		# puxa o dragão para baixo
 		$dragon.position.y += y
 
@@ -46,6 +51,11 @@ func _process(delta):
 		# se apertou seta para cima, diminui o valor de y (posição vertical) do dragão
 		if Input.is_action_pressed("ui_up"):
 			$dragon.position.y -= 13
+		
+		
+		
+		if Input.is_action_pressed("ui_right"):
+			$dragon.position.x = 50
 			
 	elif status == 0: # parado
 		
